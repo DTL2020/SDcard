@@ -51,18 +51,14 @@ int main(int argc, char* argv[])
 
 	///Command protocol
 	SDCMD_DESCRIPTOR sdCmdDescriptor = { 0 };
-	sdCmdDescriptor.Cmd = ucCmd; // csd 9
+	sdCmdDescriptor.Cmd = ucCmd; 
 	sdCmdDescriptor.CmdClass = SDCC_STANDARD;
 	sdCmdDescriptor.TransferDirection = SDTD_READ;
 	sdCmdDescriptor.TransferType = SDTT_CMD_ONLY; 
 	sdCmdDescriptor.ResponseType = SDRT_2;
 	memcpy((BYTE*)(&(pCmd->Data[0])), &sdCmdDescriptor, sizeof(SDCMD_DESCRIPTOR));
 
-	int nSizeOfRet = nSizeOfCmd;// *10;
-
-
-	uint8_t* pRet = (uint8_t*) new BYTE[nSizeOfCmd];
-	memset(pRet, 0, nSizeOfCmd);
+	int nSizeOfRet = nSizeOfCmd;
 
 	dwBytesReturned = 0;
 
